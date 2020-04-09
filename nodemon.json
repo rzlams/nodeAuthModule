@@ -1,0 +1,11 @@
+{
+  "verbose": true,
+  "ignore": ["*.spec.ts", "fixtures/*"],
+  "delay": 1500,
+  "events": {
+    "start": "npm run lint:fix",
+    "restart": "npm run lint",
+    "crash": "",
+    "exit": "kill-port 4444"
+  }
+}
