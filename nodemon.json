@@ -1,10 +1,18 @@
 {
+  "restartable": "rs",
   "verbose": true,
-  "ignore": ["*.spec.ts", "fixtures/*"],
-  "delay": 1500,
+  "ignore": [".git", "node_modules/**/node_modules", "*.spec.ts", "fixtures/*"],
+  "ext": "js,json,ts",
+  "watch": ["src/"],
+  "execMap": {
+    "ts": "node --require ts-node/register"
+  },
+  "env": {
+    "NODE_ENV": "development"
+  },
   "events": {
-    "start": "npm run lint:fix",
-    "restart": "npm run lint",
+    "start": "",
+    "restart": "",
     "crash": "",
     "exit": "kill-port 4444"
   }

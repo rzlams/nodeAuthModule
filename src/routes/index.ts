@@ -1,16 +1,19 @@
-import express from 'express';
-import upload from '../libs/multerStorage';
-import HomeController from '../controllers/HomeController';
-import TestController from '../controllers/TestController';
-import PruebaController from '../controllers/PruebaController';
+import express from "express";
+import {
+  AuthController,
+  TestController,
+  PruebaController,
+} from "../controllers";
 
 const router = express.Router(); // eslint-disable-line
 
-router.get('/favicon.ico', HomeController.index);
+//router.get("/favicon.ico", AuthController.login);
+router.get("/auth/login", AuthController.login);
+router.get("/auth/refresh", AuthController.refreshTokens);
 
-router.get('/upload', TestController.uploadView);
-router.post('/upload', upload.any(), TestController.upload);
+router.get("/upload", TestController.uploadView);
+router.post("/upload", TestController.upload);
 
-router.get('/:path?', PruebaController.downloadView);
+router.get("/:path?", PruebaController.downloadView);
 
 export default router;

@@ -1,7 +1,9 @@
-import {Request, Response, NextFunction} from 'express'; // eslint-disable-line
+import { Request, Response, NextFunction } from "express"; // eslint-disable-line
 
-class TestController {
-/*
+export class TestController {
+  /*
+ * Intento de Cargar un middleware para un controlador
+
   public preRequest = (req: Request, res: Response, next: NextFunction) => {
     console.log('entro en el middleware');
     next();
@@ -9,13 +11,19 @@ class TestController {
 
   preRequest();
 */
-  public uploadView = (req: Request, res: Response, next: NextFunction) => {
-    res.render('upload');
-  };
+  public async uploadView(req: Request, res: Response, next: NextFunction) {
+    try {
+      res.render("upload");
+    } catch (error) {
+      next(error);
+    }
+  }
 
-  public upload = (req: Request, res: Response, next: NextFunction) => {
-    res.redirect('/upload');
-  };
+  public async upload(req: Request, res: Response, next: NextFunction) {
+    try {
+      res.redirect("/upload");
+    } catch (error) {
+      next(error);
+    }
+  }
 }
-
-export default new TestController();
